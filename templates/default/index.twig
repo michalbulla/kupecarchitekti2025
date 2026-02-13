@@ -20,8 +20,8 @@
               <div class="project-images sm:grid sm:grid-cols-2 md:grid-cols-3 gap-4 pb-8">
                 {% for project in projects %}
                   <div class="col-span-1 mb-4">
-                    <a class="block border-8 border-white mb-2" href="{{ project.obrazky.one.url('projectLarge') }}" data-fancybox="{{ project.id }}"><img src="{{ project.obrazky.one.url('projectMainLarge') }}" alt=""></a>
-                    <h2 class="text-center text-xl font-bold"><a href="{{ project.obrazky.one.url('projectLarge') }}" data-fancybox="{{ project.id }}">{{ project.title }}</a></h2>
+                    <a class="block border-8 border-white mb-2" href="{{ project.url }}" data-fancybox="{{ project.id }}"><img src="{{ project.obrazky.one.url('projectMainLarge') }}" alt=""></a>
+                    <h2 class="text-center text-xl font-bold"><a href="{{ project.url }}" data-fancybox="{{ project.id }}">{{ project.title }}</a></h2>
                   </div>
                 {% endfor %}
               </div>
