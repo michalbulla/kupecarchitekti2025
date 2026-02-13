@@ -1,6 +1,6 @@
 {% extends "_layouts/base" %}
 {% set uri = entry.uri %}
-{% set showSidebar = entry.hideSidebar != 1 %}
+{% set zobrazitBocnyPanel = entry.zobrazitBocnyPanel == 1 %}
 {% set pageHeading = entry.pageHeading|default(entry.title) %}
 
 {% block pageLayout %}

@@ -1,0 +1,20 @@
+<div class="flex justify-center mb-8">
+
+  {% if siteOptions.facebookHandle|length %}
+    <a class="mx-4 block" href="https://www.facebook.com/{{ siteOptions.facebookHandle }}" target="_blank" title="Facebook">
+      <img src="/img/facebook.png" alt="Facebook">
+    </a>
+  {% endif %}
+
+  {% if siteOptions.linkedinHandle|length %}
+    <a class="mx-4 block" href="https://www.linkedin.com/in/{{ siteOptions.linkedinHandle }}" target="_blank" title="LinkedIn">
+      <img src="/img/linkedIn.png" alt="LinkedIn">
+    </a>
+  {% endif %}
+
+  {% if siteOptions.instagramHandle|length %}
+    <a class="mx-4 block" href="https://www.instagram.com/{{ siteOptions.instagramHandle }}" target="_blank" title="Instagram">
+      <img src="/img/instagram.png" alt="Instagram">
+    </a>
+  {% endif %}
+</div>

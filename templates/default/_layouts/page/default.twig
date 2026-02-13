@@ -1,13 +1,17 @@
-<div id="page-wrap">
+<div id="page-wrap" class="bg-brand-gray-lightest/80">
   {% block headerContent %}
     {% include '_partials/header' %}
+  {% endblock %}
+
+  {% block headerImage %}
+    {% include '_partials/headerImage' %}
   {% endblock %}
 
   {% block subNavMobile %}
     {% include '_partials/nav/subMobile' %}
   {% endblock %}
 
-  <div class="px-4 xl:px-0 xl:container">
+  <div class="px-4 lg:container">
     {% block contentLayout %}
       {% embed '_layouts/content/default' %}
       {% endembed %}

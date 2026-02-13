@@ -1,0 +1,45 @@
+{% extends "_layouts/base" %}
+{% set uri = entry.uri|default('blog') %}
+{% set pageHeading = entry.pageHeading|default(entry.title) %}
+
+{% set showSidebar = true %}
+
+{% block pageLayout %}
+  {% embed '_layouts/page/default' %}
+    {% block contentLayout %}
+      {% embed '_layouts/content/default' %}
+
+        {% block mainContent %}
+          {% cache %}
+            <h1 class="main-heading">{{ pageHeading }}</h1>
+            {% set projects = craft.entries.section('projekty').all %}
+            {% if projects %}
+              <div class="projects">
+                {% for project in projects %}
+                  <div class="project md:grid md:grid-cols-4 md:gap-8 mb-8 pb-8 border-b border-brand-gray-light/50">
+                    {# <div class="project-image md:col-span-1">
+                      <a href="{{ project.obrazky.one.url('projectLarge') }}" data-fancybox="{{ project.id }}"><img src="{{ project.obrazky.one.url('projectMain') }}" alt=""></a>
+                    </div> #}
+                    <div class="default-content md:col-span-4">
+                      {% if project.obsah|length %}
+                        <h2 class="!mt-0 mb-8"><a href="{{ project.url }}">{{ project.title }}</a><span class="text-base font-normal text-brand-gray-light md:pl-4 block md:inline-block"><span class="hidden md:inline-block">|</span><a class="pl-0 md:pl-2 text-brand-gray underline hover:no-underline" href="{{ project.url }}">čítaj viac ></a></span></h2>
+                      {% else %}
+                        <h2 class="!mt-0 mb-8">{{ project.title }}</h2>
+                      {% endif %}
+                      {{ project.popis|length ? project.popis : project.obsah }}
+                      <div class="project-images sm:grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+                        {% for image in project.obrazky %}
+                          <a class="col-span-1 border-4 border-white mb-4 md:mb-0" href="{{ image.url('projectLarge') }}" data-fancybox="{{ project.id }}"><img src="{{ image.url('projectMain') }}" alt=""></a>
+                        {% endfor %}
+                      </div>
+                    </div>
+                  </div>
+                {% endfor %}
+              </div>
+            {% endif %}
+          {% endcache %}
+        {% endblock %}
+      {% endembed %}
+    {% endblock %}
+  {% endembed %}
+{% endblock %}

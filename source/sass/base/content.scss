@@ -32,7 +32,7 @@
   }
 
   h2 {
-    @apply font-bold text-content-h2 text-3xl leading-tight mt-8 mb-3;
+    @apply font-bold text-content-h2 text-2xl leading-tight mt-8 mb-3;
 
     + h3,
     + h4 {
@@ -474,6 +474,10 @@ p.mobile-note-wide {
       border-right: 0 !important;;
     }
   }
+}
+
+.intro-content p {
+  @apply text-lg;
 }
 
 // Gallery

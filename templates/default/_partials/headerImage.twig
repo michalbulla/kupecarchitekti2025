@@ -1,0 +1,31 @@
+{% set headerImageTransform = {
+    mode: 'crop',
+    width: 2000,
+    height: 500,
+    quality: 100
+} %}
+
+{% set headerImage = headerImage is defined ? headerImage : entry.headerImage.one %}
+
+{% if headerImage|length %}
+  <div class="relative w-full h-[420px] overflow-hidden mb-10">
+    <img src="{{ headerImage.getUrl(headerImageTransform) }}" alt="{{ entry.title }}" class="object-cover object-center w-full h-full">
+
+    {% cache %}
+      {% apply spaceless %}
+        <div class="absolute bottom-0 left-0 w-full bg-brand-gray-light/80">
+          <ul class="py-2 lg:container px-4 space-x-2 text-sm text-white uppercase">
+            <li class="inline-block"><a href="/">O nás</a></li>
+            <li class="inline-block">/</li>
+            {% for crumb in entry.getAncestors().all %}
+              <li class="inline-block">{{ crumb.getLink() }}</li>
+              <li class="inline-block">/</li>
+            {% endfor %}
+            <li class="inline-block">{{ entry.title }}</li>
+          </ul>
+        </div>
+      {% endapply %}
+    {% endcache %}
+
+  </div>
+{% endif %}

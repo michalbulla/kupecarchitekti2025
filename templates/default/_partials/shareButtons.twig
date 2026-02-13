@@ -6,8 +6,9 @@
   } only %}
 #}
 
-{% set title = title|url_encode %}
-{% set excerpt = excerpt|url_encode %}
+{% set title = entry.title|url_encode %}
+{% set excerpt = entry.seoDescription|url_encode %}
+{% set url = entry.url %}
 
 <a class="text-brand-facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ url }}" title="Share on Facebook" target="_blank">
   {{ svg("@webroot/img/icons/facebook-square-brands.svg")|attr({class: 'h-6 w-6 inline-block'}) }}<span class="sr-only">Facebook</span>

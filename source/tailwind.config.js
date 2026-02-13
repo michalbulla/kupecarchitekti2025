@@ -4,17 +4,17 @@ module.exports = {
   content: ['./templates/**/*.twig'],
   theme: {
     fontFamily: {
-      primary: ['ui-sans-serif', 'sans-serif'],
+      primary: ['Roboto', 'sans-serif'],
       //   secondary: ['ui-sans-serif', 'sans-serif'],
     },
     screens: {
       sm: '450px',
       md: '768px',
       lg: '1024px',
-      xl: '1350px',
+      xl: '1024px',
       // We want the maximum container to stop at 1350px
       // so we set the last breakpoint to the same value
-      '2xl': '1350px',
+      '2xl': '1024px',
       // The original Tailwind 2xl breakpoint value
       // '2xl': '1536px',
     },
@@ -25,12 +25,16 @@ module.exports = {
       colors: {
         brand: {
           // put the custom site color here
-          blue: colors.blue[500],
+          'gray': '#555555',
+          'gray-light': '#808080',
+          'gray-lightest': '#f6f6f6',
+          'gray-dark': '#333',
+          'main': '#B9B8B4',
         },
         content: {
           'text': colors.gray[600],
           'link': colors.blue[700],
-          'h2': colors.gray[600],
+          'h2': '#808080',
           'h3': colors.gray[600],
           'h4': colors.gray[600],
           'divider': colors.gray[300],

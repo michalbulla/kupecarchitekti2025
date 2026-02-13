@@ -1,9 +1,20 @@
-<footer>
-  <div class="mt-8 bg-gray-300">
-    <div class="xl:container">
-      <div class="p-2 md:p-4">
-        <p class="text-sm text-center">&copy;{{ 'now'|date('Y') }} {{ siteName }}. All Rights Reserved.</p>
-        {% include '_partials/signature' %}
+{# <div class="bg-brand-gray-lightest">
+  <div class="lg:container px-4 flex justify-end pb-4">
+    <a _="on click go to the top of the body smoothly" class="rounded-full cursor-pointer bg-brand-main w-24 h-24 flex items-center justify-center">{{ svg("@webroot/img/icons/chevron-up-solid.svg")|attr({class: 'h-14 w-14 inline-block text-white'}) }}</a>
+  </div>
+</div> #}
+<footer class="bg-brand-main">
+  <div class="lg:container px-4">
+    <div class="md:grid grid-cols-5 gap-8 pt-8 pb-12">
+      <div class="col-span-3 mb-8 md:mb-0">
+        <p class="text-brand-gray mb-4"><strong>sídlo: </strong>Moyzesova 4141/35A, 977 01 Brezno</p>
+        <p class="text-brand-gray mb-4"><strong>ateliér: </strong>Nám M.R.Štefánika 40/48, 977 01 Brezno</p>
+        <p class="text-brand-gray mb-4"><strong>tel.: </strong>00421903761892</p>
+        <p class="text-brand-gray mb-4"><strong>email: </strong><a href="mailto:kupec@kupecarchitekti.sk">kupec@kupecarchitekti.sk</a><br><a href="mailtoinfo@kupecarchitekti.sk"></a>info@kupecarchitekti.sk</p>
+        <p class="text-sm"> KupecArchitekti.sk. Všetky práva vyhradené. | <a href="/zasady-spracovania-osobnych-udajov">Zásady spracovanie osobných údajov a GDPR</a></p>
+      </div>
+      <div class="col-span-2">
+        {% include "_partials/socialButtons" %}
       </div>
     </div>
   </div>

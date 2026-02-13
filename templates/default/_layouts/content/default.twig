@@ -1,12 +1,12 @@
 <div id="page">
-  <div id="crumbs" class="hidden md:block">
+  {# <div id="crumbs" class="hidden md:block">
     {% block crumbs %}
       {% include '_partials/nav/crumbs' %}
     {% endblock %}
-  </div>
+  </div> #}
 
-  <div id="content" class="flex gap-8 justify-items-start">
-    <div id="main-content-start" class="flex-grow max-w-full">
+  <div id="content" class="md:flex gap-12 justify-items-start">
+    <div id="main-content-start" class="flex-grow max-w-full pb-8 lg:pb-0">
       {% block mainContent %}
         {% cache %}
           <h1 class="main-heading">{{ pageHeading }}</h1>
@@ -17,17 +17,20 @@
       {% endblock %}
     </div>
 
-    {% if showSidebar is defined and showSidebar %}
-      <div id="sidebar" class="hidden w-[280px] flex-shrink-0 md:block">
-        {% block subNav %}
-          {% include '_partials/nav/sub' %}
-        {% endblock %}
+    {% if zobrazitBocnyPanel is defined and zobrazitBocnyPanel %}
+      <div id="sidebar" class="w-[340px] flex-shrink-0 pb-8 mx-auto md:mx-0">
+        {% include "_partials/socialButtons" %}
 
-        {# {% block sidebarContent %}
-          {% cache %}
-            {% include '_partials/contentBuilder' with {contentField: entry.sidebarContent, blocksDir: 'sidebarContent'} %}
-          {% endcache %}
-        {% endblock %} #}
+        {% if entry.embedCode|length %}
+          {{ entry.embedCode|raw }}
+        {% endif %}
+
+        <div class="default-content">
+          {% if entry.text|length %}
+            {{ entry.text }}
+          {% endif %}
+        </div>
+        
       </div>
     {% endif %}
   </div>

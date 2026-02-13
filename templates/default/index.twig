@@ -7,9 +7,25 @@
   {% embed '_layouts/page/homePage' %}
     {% block contentLayout %}
       <div class="main-content" id="main-content-start">
+        {% include '_partials/carousel' %}
         <div class="container">
-          {# {% include '_partials/carousel' %} #}
-          <h1>{{ entry.title }}</h1>
+          <div class="text-center intro-content lg:container px-4 mb-8">
+            <h1 class="main-heading">{{ entry.title }}</h1>
+            {{ entry.obsah }}
+          </div>
+
+
+          {% set projects = craft.entries.section('projekty').all %}
+            {% if projects %}
+              <div class="project-images sm:grid sm:grid-cols-2 md:grid-cols-3 gap-4 pb-8">
+                {% for project in projects %}
+                  <div class="col-span-1 mb-4">
+                    <a class="block border-8 border-white mb-2" href="{{ project.obrazky.one.url('projectLarge') }}" data-fancybox="{{ project.id }}"><img src="{{ project.obrazky.one.url('projectMain') }}" alt=""></a>
+                    <h2 class="text-center text-xl font-bold"><a href="{{ project.obrazky.one.url('projectLarge') }}" data-fancybox="{{ project.id }}">{{ project.title }}</a></h2>
+                  </div>
+                {% endfor %}
+              </div>
+            {% endif %}
         </div>
       </div>
     {% endblock %}

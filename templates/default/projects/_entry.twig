@@ -1,0 +1,39 @@
+{% extends "_layouts/base" %}
+{% set uri = entry.uri|default('blog') %}
+{% set title = entry.title %}
+{% set excerpt = entry.popis %}
+{% set pageHeading = entry.pageHeading|default(entry.title) %}
+{% set headerImage = entry.obrazky.one %}
+{% set url = entry.url %}
+
+{% set showSidebar = true %}
+
+{% block pageLayout %}
+  {% embed '_layouts/page/default' %}
+    {% block contentLayout %}
+      {% embed '_layouts/content/default' %}
+
+        {% block mainContent %}
+          {% cache %}
+            <a class="underline hover:no-underline" href="/tvorba">< Späť na všetky projekty</a><br/><br/>
+            <div class="project-details">
+              <div class="project-info">
+                <h1 class="main-heading">{{ pageHeading }}</h1>
+                {{ entry.obsah }}
+                <div class="project-images sm:grid sm:grid-cols-2 md:grid-cols-3 gap-4 mt-8 mb-8">
+                  {% for image in entry.obrazky %}
+                    <a class="col-span-1 border-4 border-white mb-4 md:mb-0" href="{{ image.url('projectLarge') }}" data-fancybox="gallery"><img src="{{ image.url('projectMain') }}" alt=""></a>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          {% endcache %}
+        {% endblock %}
+      {% endembed %}
+    {% endblock %}
+  {% endembed %}
+{% endblock %}
+
+{# Fancybox js and css code #}
+{% css "https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css" %}
+{% js "https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js" %}
